@@ -1,4 +1,4 @@
-// FIRST TASK 
+//  THE TASK A
 
 //   Part A: JavaScript Utilities Library(Functions)
 //     Build a mini utility library with reusable JavaScript functions.Requirements:
@@ -9,7 +9,7 @@
 
 
 // MY SOLUTIONS
-
+console.log("HERE I START PART A \n")
 
 // FUNCT 1 - circle area counter 
 console.log("below used function to get circle area");
@@ -156,5 +156,45 @@ function deleteDuplicate(arr) {
 
 console.log("this is initial array " + messyArray)
 console.log("and this is the one without duplicates " + deleteDuplicate(messyArray))
+console.log("\nHERE I FINISHED PART A AND START PART B\n");
+
+// PART A IS DONE
 
 
+
+
+
+// PART B 
+
+//   Part B: Scope Simulation & Analysis
+//     Demonstrate understanding of how JavaScript scope works by creating a simulation that uses:    Requirements:
+// A global variable that is used inside and outside functions.
+// A function that declares:
+// A var variable at function level.
+// A let and const inside a block (if, for, etc.).
+// A nested function that tries to access all declared variables.
+// Add comments explaining:
+// Which variables are accessible where.
+// Why some access attempts succeed or fail.
+//     You should clearly show and explain the difference between function scope and block scope.
+
+
+// MY SOLUTION 
+console.log("below are console logs done in different scopes")
+
+let globVar = "global variable"
+
+
+function funct() {
+    var inBody = "var declared in local scope"
+
+    for(let i = 0; i < 2; i++){
+        const c = "const declared in local scope";
+        let l = "let declared in local scope";
+    }
+
+    const printer = () => console.log(`here i can print ${globVar} ${inBody} ${c} ${l}`);
+    printer();
+}
+
+funct();
