@@ -105,16 +105,16 @@ let array2 = [1, 4, 13, 23, 33];   //added spaces to make it look more clear whe
 
 function mergArray(arr1, arr2) {
     let L1 = arr1.length;
-    let L2 = arr2.length;  // get the lengths in vars
+    let L2 = arr2.length;  // getting the lengths of arrays
 
-    let Lmax = Math.max(L1, L2);
-    let Lmin = Math.min(L1, L2);
+    let Lmax = Math.max(L1, L2);   
+    let Lmin = Math.min(L1, L2); 
 
-    let arrS = [];
-    let arrL = [];
-    let arrM = [];
+    let arrS = [];   // small array
+    let arrL = [];   // big array
+    let arrM = [];   // merged array
 
-    (L1 > L2) ? (arrL = arr1, arrS = arr2) : (arrL = arr2, arrS = arr1);
+    (L1 > L2) ? (arrL = arr1, arrS = arr2) : (arrL = arr2, arrS = arr1);   // seting the big array into big one and small into small one 
 
     for (let i = 0; i < Lmax; i++) {  // for loop for merging
         while (i < Lmin) {            // and while loop instead of if else statement
