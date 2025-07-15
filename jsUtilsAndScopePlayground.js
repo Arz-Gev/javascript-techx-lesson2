@@ -105,7 +105,7 @@ let array2 = [1, 4, 13, 23, 33];   //added spaces to make it look more clear whe
 
 function mergArray(arr1, arr2) {
     let L1 = arr1.length;
-    let L2 = arr2.length;
+    let L2 = arr2.length;  // get the lengths in vars
 
     let Lmax = Math.max(L1, L2);
     let Lmin = Math.min(L1, L2);
@@ -164,6 +164,11 @@ console.log("\nHERE I FINISHED PART A AND START PART B\n");
 
 
 
+
+
+
+
+
 // PART B 
 
 //   Part B: Scope Simulation & Analysis
@@ -179,22 +184,84 @@ console.log("\nHERE I FINISHED PART A AND START PART B\n");
 //     You should clearly show and explain the difference between function scope and block scope.
 
 
+
 // MY SOLUTION 
 console.log("below are console logs done in different scopes")
 
-let globVar = "global variable"
+let globVar = "global variable"   // this is accessible everywhere in this file below line of it's decloration
 
 
 function funct() {
-    var inBody = "var declared in local scope"
-
-    for(let i = 0; i < 2; i++){
+    var inBody = "var declared in local scope"   // this is accessible everywhere below this line, it's "var" he dose not care abouth scopes
+    let letInBody = "let declared in local scope"
+    for (let i = 0; i < 1; i++) {
         const c = "const declared in local scope";
-        let l = "let declared in local scope";
+        let l = "let declared in local scope";      //these two accessible olny inside of this block scope
+
+        console.log(`this is console log form block scope here i can print ${c} ${l}, and also the one from funct scope - ${letInBody}`)
     }
 
-    const printer = () => console.log(`here i can print ${globVar} ${inBody} ${c} ${l}`);
-    printer();
+    const printer = () => {
+        let a = "a"
+        console.log(`here i can print ${globVar} ${inBody}`)    // this will work, so no try catch
+
+        console.log("below i will try to print vars declared in block scope, i try to do it not from that block")   // these two are not, so added try catch
+        try {
+            console.log(c)
+        } catch (error) {
+            console.log("got error - ", error.message)
+        }
+        try {
+            console.log(l)
+        } catch (error) {
+            console.log("got error - ", error.message)
+        }
+    }
+    printer();   // rusn nested arrow funct
 }
 
-funct();
+funct();   //runs funct
+console.log("\nPART B IS READY STARTING PART C\n")
+
+// PART B IS DONE
+
+
+
+
+
+
+
+
+
+
+// PART C
+
+//   Part C: Hoisting & TDZ Debugger
+//     Simulate and explain how hoisting and temporal dead zone affect variable access.    Requirements:
+// Use var, let, and const:
+// Access each variable before it's declared to show how hoisting behaves differently.
+// Include both variable and function hoisting examples.Log and label each case:
+// Which one logs undefined
+// Which one throws a ReferenceError
+// Write a short explanation as comments beside each log about what happened and why.
+
+
+
+// MY SOLUTION
+
+
+// console.log(myLet, myConst, myVar)   this will give ReferenceError for let and const, and var will be undefined
+
+let myLet = "let"
+const myConst = "const"
+var MyVar = "var"
+
+console.log("the following printed because they've been declared before - " ,myLet, myConst, MyVar)    // this works because everything had been declared before
+
+// myFunct()  this will not work because it's function expression, will give ReferenceError  (function declaration would work though)
+  
+const myFunct = function () {   
+    console.log("funct worked")
+}
+
+myFunct(); 
